@@ -3,6 +3,8 @@ import { Link } from 'expo-router';
 import { StyleSheet, View, Text } from 'react-native';
 import HabitGreeting from '@/components/HabitGreeting';
 import HabitCard from '@/components/HabitCard';
+import Screen from '@/components/Screen';
+import ProfileHeader from '@/components/profileHeader';
 
 export default function HomeScreen() {
   const nombre = "Jesus Eduardo";
@@ -40,34 +42,50 @@ const habitos = [
   ]
   
   return (
-    <View style={styles.container}>
+    <Screen>
+      <ProfileHeader name="Jesus Eduardo" role="Programador" />
       <HabitGreeting nombre="Jesus"/>
       <View style={ {gap: 12}}> 
       {habitos.map((habit) => (
         <HabitCard key={habit.id} {...habit} />
       ))}
       </View>
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
+  titleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  stepContainer: {
+    gap: 8,
+    marginBottom: 8,
+  },
+  reactLogo: {
+    height: 178,
+    width: 290,
+    bottom: 0,
+    left: 0,
+    position: "absolute",
+  },
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#F2F6FF',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F2F6FF",
     padding: 24,
     gap: 8,
   },
   title: {
     fontSize: 22,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: "700",
+    color: "#0F172A",
   },
   subtitle: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: '#334155',
+    fontSize: 14,
+    color: "#334155",
   },
 });

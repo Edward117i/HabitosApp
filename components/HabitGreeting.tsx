@@ -8,7 +8,8 @@ export default function HabitGreeting({nombre = "Jesus"}) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{saludo} {nombre ? `, ${nombre}` : ""}</Text>
-            <Text style={styles.subtitle}>Hoy es {fecha.toLocaleDateString()} - {fecha.toLocaleTimeString()}</Text>
+            <Text style={styles.subtitle}>Hoy es {fecha.toLocaleDateString()} - {fecha.toLocaleTimeString()}
+            </Text>
         </View>
     );
 }
@@ -21,11 +22,11 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 22,
         fontWeight: '700',
-        color: '#475569',
+        color: '#93b8ebff',
     },
     subtitle: {
         fontSize: 16,
         fontWeight: '600',
-        color: '#475569',
+        color: '#c6ced9ff',
     },
 })
