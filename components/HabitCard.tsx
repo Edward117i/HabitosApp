@@ -14,7 +14,7 @@ const priorityStyles = {
     backgroundColor: "#ECFCCB",
     color: "#3F6212",
   },
-  mid: {
+  medium: {
     backgroundColor: "#FEF9C3",
     color: "#92400E",
   },
@@ -41,8 +41,8 @@ export default function HabitCard({ title, streak, inCompleted = false, priority
         <ThemedText style={[styles.badge, { backgroundColor: p.backgroundColor, color: p.color }]}>{priority}</ThemedText>
       </View>
       <View style={styles.row}>
-        {inCompleted && <ThemedText style={styles.badge}>✔ Hoy</ThemedText>}
         <ThemedText style={styles.streak}>🔥 {streak} dias</ThemedText>
+        {inCompleted && <ThemedText style={styles.badge}>✔ Hoy</ThemedText>}
       </View>
     </View>
   )

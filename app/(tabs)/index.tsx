@@ -1,57 +1,41 @@
-import { ejemploDestructuracionUsuario } from '@/utils/math';
-import { Link } from 'expo-router';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import HabitGreeting from '@/components/HabitGreeting';
 import HabitCard from '@/components/HabitCard';
 import Screen from '@/components/Screen';
 import ProfileHeader from '@/components/profileHeader';
 
 export default function HomeScreen() {
-  const nombre = "Jesus Eduardo";
-  const edad = 25; 
-  const genero = "Masculino";
-  const casado = false;
-  const hijos = 1;
-  const mascotas = 1;
-  const profesion = "Programador";
-  const salario = 1000000;
-  const ispremium = true;
-  const messeges = 10;
-  const fecha = new Date();
-  const hora = fecha.getHours();
-  const saludo = hora < 12 ? "Buenos dias" : hora < 18 ? "Buenas tardes" : "Buenas noches";
-  
-const habitos = [
-    {
-      id: 1,
-      title: "Beber Agua",
-      streak: 1,
-      inCompleted: true,
-    },
-    {
-      id: 2,
-      title: "Correr",
-      streak: 2,
-      inCompleted: false,
-    },
-    {
-      id: 3,
-      title: "Leer",
-      streak: 3,
-    },
-  ]
-  
-  return (
-    <Screen>
-      <ProfileHeader name="Jesus Eduardo" role="Programador" />
-      <HabitGreeting nombre="Jesus"/>
-      <View style={ {gap: 12}}> 
-      {habitos.map((habit) => (
-        <HabitCard key={habit.id} {...habit} />
-      ))}
-      </View>
-    </Screen>
-  );
+  const habitos = [
+      {
+        id: 1,
+        title: "Beber Agua",
+        streak: 1,
+        inCompleted: true,
+      },
+      {
+        id: 2,
+        title: "Correr",
+        streak: 2,
+        inCompleted: false,
+      },
+      {
+        id: 3,
+        title: "Leer",
+        streak: 3,
+      },
+    ]
+    
+    return (
+      <Screen>
+        <ProfileHeader name="Jesus Eduardo" role="Programador" />
+        <HabitGreeting nombre="Jesus"/>
+        <View style={ {gap: 12}}> 
+        {habitos.map((habit) => (
+          <HabitCard key={habit.id} {...habit} />
+        ))}
+        </View>
+      </Screen>
+    );
 }
 
 const styles = StyleSheet.create({
