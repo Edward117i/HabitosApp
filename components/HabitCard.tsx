@@ -1,12 +1,13 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import { ThemedText } from "./themed-text";
 import { useThemeColor } from "@/hooks/use-theme-color";
 
 type Props = {
   title: string;
   streak: number;
-  inCompleted?: boolean;
+  isCompleted?: boolean;
   priority?: "high" | "medium" | "low";
+  onToggle?: () => void;
 }
 
 const priorityStyles = {
@@ -24,27 +25,40 @@ const priorityStyles = {
   },
 } as const;
 
-export default function HabitCard({ title, streak, inCompleted = false, priority = "high" }: Props) {
-  const cardBg = useThemeColor({}, "surface");
-  const borderColor = useThemeColor({}, "border");
-  const successColor = useThemeColor({}, "success");
-  const p = priorityStyles[priority];
+export default function HabitCard({
+  title,
+  streak,
+  isCompleted = false,
+  priority = "high",
+  onToggle,
+}: Props) {
+  const surface = useThemeColor({}, "surface");
+  const success = useThemeColor({}, "success");
+  const border = useThemeColor({}, "border");
 
+  const p = priorityStyles[priority];
   return (
-    <View style={[
-      styles.card,
-      { backgroundColor: cardBg, borderColor },
-      inCompleted && { borderWidth: 2, borderColor: successColor }
-    ]}>
-      <View style={styles.row}>
-        <ThemedText style={styles.title}>{title}</ThemedText>
-        <ThemedText style={[styles.badge, { backgroundColor: p.backgroundColor, color: p.color }]}>{priority}</ThemedText>
-      </View>
-      <View style={styles.row}>
-        <ThemedText style={styles.streak}>🔥 {streak} dias</ThemedText>
-        {inCompleted && <ThemedText style={styles.badge}>✔ Hoy</ThemedText>}
-      </View>
-    </View>
+    <Pressable
+      onPress={onToggle}
+      style={({ pressed }) => [
+        styles.card,
+        {
+          backgroundColor: surface,
+          opacity: pressed ? 0.96 : 1,
+          borderColor: isCompleted ? success : border,
+        },
+      ]}
+    >
+      
+        <View style={styles.row}>
+          <ThemedText style={styles.title}>{title}</ThemedText>
+          <ThemedText style={[styles.badge, { backgroundColor: p.backgroundColor, color: p.color }]}>{priority}</ThemedText>
+        </View>
+        <View style={styles.row}>
+          <ThemedText style={styles.streak}>🔥 {streak} dias</ThemedText>
+          {isCompleted && <ThemedText style={styles.badge}>✔ Hoy</ThemedText>}
+        </View>
+    </Pressable>
   )
 }
 

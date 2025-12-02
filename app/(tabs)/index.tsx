@@ -3,8 +3,45 @@ import HabitGreeting from '@/components/HabitGreeting';
 import HabitCard from '@/components/HabitCard';
 import Screen from '@/components/Screen';
 import ProfileHeader from '@/components/profileHeader';
+import { useState } from 'react';
+
+type Habit = {
+  id: string;
+  title: string;
+  streak: number;
+  isCompleted: boolean;
+  priority: "low" | "mid" | "high";
+};
+
+const INITIAL: Habit[] = [
+  {
+    id: "h1",
+    title: "Beber agua",
+    streak: 3,
+    isCompleted: true,
+    priority: "mid",
+  },
+  {
+    id: "h2",
+    title: "Leer 10 min",
+    streak: 1,
+    isCompleted: false,
+    priority: "low",
+  },
+  {
+    id: "h3",
+    title: "Caminar 15 min",
+    streak: 7,
+    isCompleted: false,
+    priority: "high",
+  },
+];
 
 export default function HomeScreen() {
+  
+  const [items, setItems ] = useState<Habit[]>(INITIAL)
+  const [nuevo, setNuevo] = useState()
+  
   const habitos = [
       {
         id: 1,
