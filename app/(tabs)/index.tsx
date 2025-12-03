@@ -105,7 +105,7 @@ export default function HomeScreen() {
         />
         <Pressable
           onPress={addHabit}
-          style={[styles.addBtn, { backgroundColor: primary }]
+          style={[styles.addBtn,  { backgroundColor: primary } ]
           }>
           <ThemedText>Añadir</ThemedText>
         </Pressable>
@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
   addBtn: {
     paddingHorizontal: 14,
     paddingVertical: 10,
+    borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
   },
