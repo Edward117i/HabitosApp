@@ -94,16 +94,18 @@ export default function HomeScreen() {
       <ProfileHeader name="Jesus Eduardo" role="Programador" />
       <HabitGreeting nombre="Jesus" />
       <View style={[styles.row, { alignItems: "center" }]}>
-        <TextInput value={nuevo} onChangeText={setNuevo}
-          placeholder="Nuevo hábito (eje Meditar"
+        <TextInput
+          value={nuevo}
+          onChangeText={setNuevo}
+          placeholder="Nuevo hábito (ejemplo.. Meditar)"
+          placeholderTextColor={muted}
           onSubmitEditing={addHabit}
           style={[styles.input, { backgroundColor: surface, borderColor: border, color: text }
           ]}
-
         />
         <Pressable
           onPress={addHabit}
-          style={[styles.addBtn, { backgroundColor: primary }]
+          style={[styles.addBtn,  { backgroundColor: primary } ]
           }>
           <ThemedText>Añadir</ThemedText>
         </Pressable>
@@ -170,6 +172,7 @@ const styles = StyleSheet.create({
   addBtn: {
     paddingHorizontal: 14,
     paddingVertical: 10,
+    borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
   },
