@@ -59,7 +59,7 @@ export default function HomeScreen() {
   // }, [])
   const toggle = useCallback((id: string) => {
     setItems(prev => prev.map(h => {
-      if(h.id !== id) return h;
+      if (h.id !== id) return h;
       const complete = !h.isCompleted;
       return {
         ...h,
@@ -67,47 +67,47 @@ export default function HomeScreen() {
         streak: complete ? h.streak + 1 : Math.max(0, h.streak - 1),
       };
     })
-  );
-}, []);
+    );
+  }, []);
 
-const addHabit = useCallback(() => {
-  const title = nuevo.trim();
-  if(!title) return;
-  setItems(prev => [...prev, 
-    {
-      id: `h${Date.now()}`,
-      title,
-      streak: 0,
-      isCompleted: false,
-      priority: "low",
-    },
-    ...prev,
-  ]);
-  setNuevo("");
-}, [nuevo]);
+  const addHabit = useCallback(() => {
+    const title = nuevo.trim();
+    if (!title) return;
+    setItems(prev => [
+      {
+        id: `h${Date.now()}`,
+        title,
+        streak: 0,
+        isCompleted: false,
+        priority: "low",
+      },
+      ...prev,
+    ]);
+    setNuevo("");
+  }, [nuevo]);
 
-const total = items.length;
-const complete = useMemo(() => items.filter(h => h.isCompleted).length, [items]);
+  const total = items.length;
+  const complete = useMemo(() => items.filter(h => h.isCompleted).length, [items]);
 
   return (
     <Screen>
       <ProfileHeader name="Jesus Eduardo" role="Programador" />
       <HabitGreeting nombre="Jesus" />
       <View style={[styles.row, { alignItems: "center" }]}>
-        <TextInput value={nuevo} onChangeText={setNuevo} 
-        placeholder="Nuevo hábito (eje Meditar"
-        onSubmitEditing={addHabit}
-        style={[styles.input, { backgroundColor: surface, borderColor: border, color: text }
-        ]}
+        <TextInput value={nuevo} onChangeText={setNuevo}
+          placeholder="Nuevo hábito (eje Meditar"
+          onSubmitEditing={addHabit}
+          style={[styles.input, { backgroundColor: surface, borderColor: border, color: text }
+          ]}
 
-       />
-       <Pressable
-        onPress={addHabit}
-        style={[styles.addBtn, { backgroundColor: primary }]
-        }>  
+        />
+        <Pressable
+          onPress={addHabit}
+          style={[styles.addBtn, { backgroundColor: primary }]
+          }>
           <ThemedText>Añadir</ThemedText>
         </Pressable>
-    
+
       </View>
       <View style={{ gap: 12 }}>
         {items.map((habit) => (
@@ -166,12 +166,12 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     paddingHorizontal: 12,
     paddingVertical: 10,
-   },
-   addBtn: {
+  },
+  addBtn: {
     paddingHorizontal: 14,
     paddingVertical: 10,
     alignItems: "center",
     justifyContent: "center",
-   },
-    
+  },
+
 });
