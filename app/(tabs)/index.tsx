@@ -94,12 +94,14 @@ export default function HomeScreen() {
       <ProfileHeader name="Jesus Eduardo" role="Programador" />
       <HabitGreeting nombre="Jesus" />
       <View style={[styles.row, { alignItems: "center" }]}>
-        <TextInput value={nuevo} onChangeText={setNuevo}
-          placeholder="Nuevo hábito (eje Meditar"
+        <TextInput
+          value={nuevo}
+          onChangeText={setNuevo}
+          placeholder="Nuevo hábito (ejemplo.. Meditar)"
+          placeholderTextColor={muted}
           onSubmitEditing={addHabit}
           style={[styles.input, { backgroundColor: surface, borderColor: border, color: text }
           ]}
-
         />
         <Pressable
           onPress={addHabit}
