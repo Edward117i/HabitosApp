@@ -49,17 +49,25 @@ export default function HabitCard({
         },
       ]}
     >
-      
-        <View style={styles.row}>
-          <ThemedText style={styles.title}>{title}</ThemedText>
-          <ThemedText style={[styles.badge, { backgroundColor: p.backgroundColor, color: p.color }]}>{priority}</ThemedText>
-        </View>
-        <View style={styles.row}>
-          <ThemedText style={styles.streak}>🔥 {streak} dias</ThemedText>
-          {isCompleted && <ThemedText style={styles.badge}>✔ Hoy</ThemedText>}
-        </View>
+      <View style={styles.row}>
+        <ThemedText style={styles.title}>{title}</ThemedText>
+        <ThemedText
+          style={[
+            styles.badge,
+            { backgroundColor: p.backgroundColor, color: p.color },
+          ]}
+        >
+          {priority}
+        </ThemedText>
+      </View>
+      <View style={styles.row}>
+        <ThemedText type="defaultSemiBold" style={styles.streak}>
+          🔥 {streak} días
+        </ThemedText>
+        {isCompleted && <ThemedText style={styles.badge}>✔︎ Hoy</ThemedText>}
+      </View>
     </Pressable>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
